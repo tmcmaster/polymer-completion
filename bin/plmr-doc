@@ -1,0 +1,15 @@
+#!/bin/bash
+
+COMPONENT=$1
+COMP_NAME=$(echo $COMPONENT |awk -F"/" '{print $2}');
+
+if [[ "$COMPONENT" =~ ^@polymer/* ]]; then
+    open "https://www.npmjs.com/package/@polymer/$COMP_NAME"
+elif [[ "$COMPONENT" =~ ^@vaadin/* ]]; then
+    open "https:///www.npmjs.com/package/@vaadin/$COMP_NAME"
+elif [[ "$COMPONENT" =~ ^tmcmaster/* ]]; then
+    open "https://tmcmaster.github.io/$COMP_NAME"
+else
+    echo "Could not find documentation for component: $COMPONENT";
+    exit 1;
+fi

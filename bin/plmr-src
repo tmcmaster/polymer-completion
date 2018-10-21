@@ -1,0 +1,15 @@
+#!/bin/bash
+
+COMPONENT=$1
+COMP_NAME=$(echo $COMPONENT |awk -F"/" '{print $2}');
+
+if [[ "$COMPONENT" =~ ^@polymer/* ]]; then
+    open "https://github.com/PolymerElements/$COMP_NAME"
+elif [[ "$COMPONENT" =~ ^@vaadin/* ]]; then
+    open "https://github.com/vaadin/$COMP_NAME"
+elif [[ "$COMPONENT" =~ ^tmcmaster/* ]]; then
+    open "https://github.com/tmcmaster/$COMP_NAME"
+else
+    echo "Could not find source for component: $COMPONENT";
+    exit 1;
+fi
